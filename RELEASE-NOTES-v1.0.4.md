@@ -10,8 +10,8 @@
 
 ## 文件
 
-- 映光卡匣-1.0.4.apk：Android 安装包
-- 映光卡匣-全套闪卡001-039-20261031.zip：完整 .ruic 卡包
+- RuiC-Card-Library-1.0.4.apk：Android 安装包
+- RuiC-Cards-001-039-20261031.zip：完整 .ruic 卡包
 
 应用扫描 Android Download/下载目录即可快速导入 .ruic 或卡包 ZIP。也可在应用中选择文件。请不要将合集 ZIP 当成单张卡导入。
 
@@ -20,4 +20,5 @@
 - APK SHA-256：AE2FC5DA0819B5CE5DCC41AE358F7ACAB6034660CA1F1591F85D6BA8AD53F6E3
 - 卡包 ZIP SHA-256：03729431cf256a7d1b958d9fcc1729cefa83f4a222eca4f1ca5d942d901f656a
 - 代码许可见仓库 LICENSE；卡片图稿许可说明见 ARTWORK-NOTICE.md。
+
 
