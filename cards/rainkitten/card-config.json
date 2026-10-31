@@ -1,0 +1,32 @@
+{
+  "title": "蘑菇雨伞",
+  "subtitle": "雨声与小憩",
+  "technique": "蘑菇雨伞",
+  "tagline": "雨再大，也有小小的温柔。",
+  "description": "雨再大，也有小小的温柔。",
+  "edition": "007 / 008",
+  "collection": "光影拾藏",
+  "assets": {
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "model": "./assets/card.glb"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.28,
+    "backgroundDepth": -0.18,
+    "effectsScale": 1,
+    "effectsDepth": 0.45,
+    "foil": 0.35
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "font": "C:\\Windows\\Fonts\\simkai.ttf"
+}

@@ -1,0 +1,409 @@
+{
+  "product": "映光卡匣",
+  "catalogVersion": "1.0",
+  "totalCards": 39,
+  "builtInCards": 8,
+  "importableCards": 31,
+  "charactersMentionedByUser": [
+    "夏柠柒",
+    "兰呦呦"
+  ],
+  "contentGroups": [
+    "AI漫剧女性角色",
+    "风景壁纸",
+    "其他插画与动物"
+  ],
+  "characterMappingNote": "人物名称按用户提供的主题词收录；目录未对具体卡号作未经确认的人物对应或官方关联声明。",
+  "cards": [
+    {
+      "sku": "RUIC-001",
+      "number": 1,
+      "id": "windowlight",
+      "title": "窗畔相望",
+      "subtitle": "日光与花影",
+      "file": "001-窗畔相望.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-002",
+      "number": 2,
+      "id": "dusksea",
+      "title": "暮海来信",
+      "subtitle": "日落与海风",
+      "file": "002-暮海来信.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-003",
+      "number": 3,
+      "id": "bluehour",
+      "title": "蓝调心事",
+      "subtitle": "蓝调与微光",
+      "file": "003-蓝调心事.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-004",
+      "number": 4,
+      "id": "sunsettrain",
+      "title": "落日列车",
+      "subtitle": "晚霞与旅途",
+      "file": "004-落日列车.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-005",
+      "number": 5,
+      "id": "citywatch",
+      "title": "守望之城",
+      "subtitle": "城市与日落",
+      "file": "005-守望之城.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-006",
+      "number": 6,
+      "id": "piratecat",
+      "title": "喵海船长",
+      "subtitle": "帆影与冒险",
+      "file": "006-喵海船长.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-007",
+      "number": 7,
+      "id": "rainkitten",
+      "title": "蘑菇雨伞",
+      "subtitle": "雨声与小憩",
+      "file": "007-蘑菇雨伞.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-008",
+      "number": 8,
+      "id": "silvermeadow",
+      "title": "银发晴野",
+      "subtitle": "晴野与微笑",
+      "file": "008-银发晴野.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-009",
+      "number": 9,
+      "id": "sakurawink",
+      "title": "樱花眨眼",
+      "subtitle": "花瓣与微笑",
+      "file": "009-樱花眨眼.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-010",
+      "number": 10,
+      "id": "streetcat",
+      "title": "街巷小橘",
+      "subtitle": "街巷与暖阳",
+      "file": "010-街巷小橘.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-011",
+      "number": 11,
+      "id": "goldsmile",
+      "title": "金发笑颜",
+      "subtitle": "金发与笑意",
+      "file": "011-金发笑颜.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-012",
+      "number": 12,
+      "id": "alpinevista",
+      "title": "青山入云",
+      "subtitle": "山林与远望",
+      "file": "012-青山入云.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-013",
+      "number": 13,
+      "id": "rivernight",
+      "title": "江畔流光",
+      "subtitle": "江水与灯火",
+      "file": "013-江畔流光.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-014",
+      "number": 14,
+      "id": "campusgroup",
+      "title": "少年同窗",
+      "subtitle": "同窗与青春",
+      "file": "014-少年同窗.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-015",
+      "number": 15,
+      "id": "summergroup",
+      "title": "仲夏同框",
+      "subtitle": "合照与夏天",
+      "file": "015-仲夏同框.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-016",
+      "number": 16,
+      "id": "guitarsun",
+      "title": "光下琴声",
+      "subtitle": "窗光与琴弦",
+      "file": "016-光下琴声.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-017",
+      "number": 17,
+      "id": "coffeewink",
+      "title": "街角微笑",
+      "subtitle": "夜街与微笑",
+      "file": "017-街角微笑.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-018",
+      "number": 18,
+      "id": "twinquest",
+      "title": "旅途双影",
+      "subtitle": "同行与晴空",
+      "file": "018-旅途双影.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-019",
+      "number": 19,
+      "id": "duskpromise",
+      "title": "暮色远望",
+      "subtitle": "夕照与城市",
+      "file": "019-暮色远望.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-020",
+      "number": 20,
+      "id": "moonprayer",
+      "title": "月下祈愿",
+      "subtitle": "月光与羽翼",
+      "file": "020-月下祈愿.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-021",
+      "number": 21,
+      "id": "nightrest",
+      "title": "静夜安眠",
+      "subtitle": "长夜与微光",
+      "file": "021-静夜安眠.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-022",
+      "number": 22,
+      "id": "windowread",
+      "title": "花窗夜读",
+      "subtitle": "花影与书页",
+      "file": "022-花窗夜读.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-023",
+      "number": 23,
+      "id": "leafwalk",
+      "title": "叶影同行",
+      "subtitle": "树影与白衫",
+      "file": "023-叶影同行.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-024",
+      "number": 24,
+      "id": "mornwindow",
+      "title": "晨窗微光",
+      "subtitle": "晨光与回眸",
+      "file": "024-晨窗微光.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-025",
+      "number": 25,
+      "id": "rainjade",
+      "title": "雨落青衫",
+      "subtitle": "雨声与微光",
+      "file": "025-雨落青衫.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-026",
+      "number": 26,
+      "id": "snowcrossing",
+      "title": "雪夜归途",
+      "subtitle": "雪夜与蓝围巾",
+      "file": "026-雪夜归途.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-027",
+      "number": 27,
+      "id": "silverglow",
+      "title": "银发微光",
+      "subtitle": "银发与暖室",
+      "file": "027-银发微光.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-028",
+      "number": 28,
+      "id": "peaceglow",
+      "title": "指尖晴光",
+      "subtitle": "暖阳与手势",
+      "file": "028-指尖晴光.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-029",
+      "number": 29,
+      "id": "mistwindow",
+      "title": "雾窗轻语",
+      "subtitle": "雨滴与初醒",
+      "file": "029-雾窗轻语.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-030",
+      "number": 30,
+      "id": "sunsetcampus",
+      "title": "暮色校门",
+      "subtitle": "夕照与蓝帽",
+      "file": "030-暮色校门.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-031",
+      "number": 31,
+      "id": "forestglance",
+      "title": "林间回眸",
+      "subtitle": "林影与白衣",
+      "file": "031-林间回眸.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-032",
+      "number": 32,
+      "id": "goldenlace",
+      "title": "金辉白裙",
+      "subtitle": "金发与蕾丝",
+      "file": "032-金辉白裙.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-033",
+      "number": 33,
+      "id": "silverwind",
+      "title": "银灰晚风",
+      "subtitle": "银发与晚光",
+      "file": "033-银灰晚风.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-034",
+      "number": 34,
+      "id": "windowcat",
+      "title": "窗边猫语",
+      "subtitle": "少女与白猫",
+      "file": "034-窗边猫语.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-035",
+      "number": 35,
+      "id": "cherrypages",
+      "title": "樱页微光",
+      "subtitle": "樱花与书页",
+      "file": "035-樱页微光.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-036",
+      "number": 36,
+      "id": "sweetduet",
+      "title": "甜光并肩",
+      "subtitle": "并肩与甜点",
+      "file": "036-甜光并肩.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-037",
+      "number": 37,
+      "id": "daylightv",
+      "title": "晴日手势",
+      "subtitle": "日光与手势",
+      "file": "037-晴日手势.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-038",
+      "number": 38,
+      "id": "nightstadium",
+      "title": "夜场回眸",
+      "subtitle": "夜色与操场",
+      "file": "038-夜场回眸.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    },
+    {
+      "sku": "RUIC-039",
+      "number": 39,
+      "id": "mathmemories",
+      "title": "书中回响",
+      "subtitle": "镜片与书页",
+      "file": "039-书中回响.ruic",
+      "format": ".ruic",
+      "kind": "layered"
+    }
+  ]
+}

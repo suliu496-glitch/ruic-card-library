@@ -1,0 +1,32 @@
+{
+  "title": "暮海来信",
+  "subtitle": "日落与海风",
+  "technique": "暮海来信",
+  "tagline": "把未说出口的话，交给晚风。",
+  "description": "把未说出口的话，交给晚风。",
+  "edition": "002 / 008",
+  "collection": "光影拾藏",
+  "assets": {
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "model": "./assets/card.glb"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.28,
+    "backgroundDepth": -0.18,
+    "effectsScale": 1,
+    "effectsDepth": 0.45,
+    "foil": 0.35
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "font": "C:\\Windows\\Fonts\\simkai.ttf"
+}

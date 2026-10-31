@@ -1,0 +1,98 @@
+[
+  {
+    "id": "windowlight",
+    "title": "窗畔相望",
+    "subtitle": "日光与花影",
+    "description": "窗边的光，落在你眼里。",
+    "edition": "001 / 008",
+    "cover": "./windowlight/beautified.png",
+    "configUrl": "./windowlight/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#d5c6a3"
+  },
+  {
+    "id": "dusksea",
+    "title": "暮海来信",
+    "subtitle": "日落与海风",
+    "description": "把未说出口的话，交给晚风。",
+    "edition": "002 / 008",
+    "cover": "./dusksea/beautified.png",
+    "configUrl": "./dusksea/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#dfb67c"
+  },
+  {
+    "id": "bluehour",
+    "title": "蓝调心事",
+    "subtitle": "蓝调与微光",
+    "description": "一个微笑，让平常的瞬间发光。",
+    "edition": "003 / 008",
+    "cover": "./bluehour/beautified.png",
+    "configUrl": "./bluehour/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#a9cad6"
+  },
+  {
+    "id": "sunsettrain",
+    "title": "落日列车",
+    "subtitle": "晚霞与旅途",
+    "description": "让晚霞陪你，慢慢驶向远方。",
+    "edition": "004 / 008",
+    "cover": "./sunsettrain/beautified.png",
+    "configUrl": "./sunsettrain/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#eeb395"
+  },
+  {
+    "id": "citywatch",
+    "title": "守望之城",
+    "subtitle": "城市与日落",
+    "description": "万家灯火，照亮归途。",
+    "edition": "005 / 008",
+    "cover": "./citywatch/beautified.png",
+    "configUrl": "./citywatch/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#df9d68"
+  },
+  {
+    "id": "piratecat",
+    "title": "喵海船长",
+    "subtitle": "帆影与冒险",
+    "description": "带上勇气，向着夕阳出航。",
+    "edition": "006 / 008",
+    "cover": "./piratecat/beautified.png",
+    "configUrl": "./piratecat/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#d8b26b"
+  },
+  {
+    "id": "rainkitten",
+    "title": "蘑菇雨伞",
+    "subtitle": "雨声与小憩",
+    "description": "雨再大，也有小小的温柔。",
+    "edition": "007 / 008",
+    "cover": "./rainkitten/beautified.png",
+    "configUrl": "./rainkitten/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#a8b894"
+  },
+  {
+    "id": "silvermeadow",
+    "title": "银发晴野",
+    "subtitle": "晴野与微笑",
+    "description": "把晴天和微笑，一起收藏。",
+    "edition": "008 / 008",
+    "cover": "./silvermeadow/beautified.png",
+    "configUrl": "./silvermeadow/web/card-config.json",
+    "kind": "layered",
+    "source": "builtin",
+    "accent": "#c4ceb1"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "title": "银发晴野",
+  "subtitle": "晴野与微笑",
+  "technique": "银发晴野",
+  "tagline": "把晴天和微笑，一起收藏。",
+  "description": "把晴天和微笑，一起收藏。",
+  "edition": "008 / 008",
+  "collection": "光影拾藏",
+  "assets": {
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "model": "./assets/card.glb"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.28,
+    "backgroundDepth": -0.18,
+    "effectsScale": 1,
+    "effectsDepth": 0.45,
+    "foil": 0.35
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "font": "C:\\Windows\\Fonts\\simkai.ttf"
+}

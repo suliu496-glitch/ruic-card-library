@@ -1,0 +1,15 @@
+/* The trusted RuiC renderer is embedded as an exhibit; library controls live outside. */
+html,body{width:100%;height:100%;min-width:0;min-height:0;margin:0!important;padding:0!important;background:#f7f8fa!important;overflow:hidden!important;color:#20252b;color-scheme:light}
+body>.masthead,body>.footer,.artwork-bar,.stage-note,.parameter-panel,body>dialog{display:none!important}
+main{display:block!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;max-width:none!important}
+.gallery{position:absolute!important;inset:0!important;display:block!important;margin:0!important;padding:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;border:0!important;background:transparent!important}
+.stage{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;margin:0!important;padding:0!important;background:#f7f8fa!important;outline-offset:-4px!important}
+.stage canvas{display:block;width:100%!important;height:100%!important}
+.loading{color:#66707d!important;background:#f7f8fa!important;font-size:12px!important;text-align:center;white-space:pre-line}
+.loading button{color:#2467e8;background:transparent;border:1px solid #9dbbf7;padding:8px 20px;margin:16px;cursor:pointer}
+.loading-line{background:#2467e8!important}.notice{display:none!important}
+.fallback3d{padding:26px 42px!important}.flipper3d{width:auto!important;height:min(92%,960px)!important;max-width:82%!important;aspect-ratio:2/3!important}.back3d{background:#e9effa!important;border:1px solid #c0cfe7}.back-mark{color:#416797!important;font-family:system-ui,sans-serif!important;letter-spacing:10px}
+@media(max-width:420px){.fallback3d{padding:24px 28px!important}.flipper3d{height:90%!important;max-width:78%!important;width:auto!important}}
+.stage:focus:not(:focus-visible){outline:none!important;box-shadow:none!important}
+.lineart-mask{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.layers-exploded .foil3d{display:none}.layers-exploded .face3d{box-shadow:none!important}.layers-exploded .layer3d{outline:1px solid #2467e844}.layers-exploded .layer3d::after{content:attr(data-layer-label);position:absolute;right:-64px;top:var(--label-top,0px);padding:4px 7px;color:#2467e8;background:#fffffff2;border:1px solid #bcd0f7;font:10px/1.3 "Microsoft YaHei",sans-serif;white-space:nowrap}.layers-exploded .flipper3d{height:78%!important;max-width:65%!important}
+.layers-exploded .front3d{backface-visibility:visible;-webkit-backface-visibility:visible}.layers-exploded .back3d{display:none!important}

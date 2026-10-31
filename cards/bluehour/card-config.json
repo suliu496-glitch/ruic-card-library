@@ -1,0 +1,32 @@
+{
+  "title": "蓝调心事",
+  "subtitle": "蓝调与微光",
+  "technique": "蓝调心事",
+  "tagline": "一个微笑，让平常的瞬间发光。",
+  "description": "一个微笑，让平常的瞬间发光。",
+  "edition": "003 / 008",
+  "collection": "光影拾藏",
+  "assets": {
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "model": "./assets/card.glb"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.28,
+    "backgroundDepth": -0.18,
+    "effectsScale": 1,
+    "effectsDepth": 0.45,
+    "foil": 0.35
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "font": "C:\\Windows\\Fonts\\simkai.ttf"
+}

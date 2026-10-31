@@ -1,0 +1,30 @@
+{
+  "foil": 0.35,
+  "before": {
+    "叠加 · 主体镭射": 0.04899999871850014,
+    "背景轻镭射": 0.03779999911785126,
+    "条纹强度": 0.005249999929219484,
+    "限制辉光覆盖 0.018": 0.0005249999812804163,
+    "闪星亮度": 0.4375
+  },
+  "after": {
+    "叠加 · 主体镭射": 0.049,
+    "背景轻镭射": 0.0378,
+    "条纹强度": 0.0052499999999999995,
+    "限制辉光覆盖 0.018": 0.000525,
+    "闪星亮度": 0.4375
+  },
+  "upstreamFixedStrengths": {
+    "subjectOverlay": 0.14,
+    "backgroundOverlay": 0.18,
+    "stripeEmission": 0.1,
+    "lineCoverage": 0.006,
+    "lineStrength": 40,
+    "starStrength": 5
+  },
+  "driverProperty": "转卡控制 · 播放时间线预览[镭射强度]",
+  "viewDependentFoilRetained": true,
+  "lineArtEmitterRetained": true,
+  "backgroundStarsRetained": true,
+  "parallaxAndGeometryChanged": false
+}

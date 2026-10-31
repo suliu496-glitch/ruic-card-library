@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'">
+  <title>映光卡匣 · 私人闪卡收藏馆</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./preview.css">
+  <script type="module" src="./app.js"></script>
+  <script type="module" src="./library-ui.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="./index.html" aria-label="映光卡匣首页"><span class="brand-symbol" data-icon="cards" aria-hidden="true"></span><span>映光卡匣</span></a>
+    <span class="offline-indicator"><span aria-hidden="true"></span>本地卡库</span>
+    <div class="header-actions"><label class="search-field"><span data-icon="search" aria-hidden="true"></span><input id="search" type="search" placeholder="搜索卡片" aria-label="搜索卡片名称与描述" autocomplete="off"></label><button id="import" class="primary-button"><span data-icon="plus" aria-hidden="true"></span>导入卡片</button><button id="settings-open" class="icon-button settings-button" aria-label="打开观赏设置" aria-haspopup="dialog" aria-controls="settings-dialog" aria-expanded="false" title="观赏设置"><span data-icon="settings" aria-hidden="true"></span></button></div>
+  </header>
+  <main class="workspace" data-view="library">
+    <section class="library" aria-labelledby="library-heading">
+      <h1 id="library-heading" class="sr-only">我的卡片</h1>
+      <div class="album-toolbar"><div class="library-filters"><div class="segmented" role="group" aria-label="卡片筛选"><button id="filter-all" aria-pressed="true">全部卡片 <span id="total-count" class="count-pill">0</span></button><button id="filter-favorites" aria-pressed="false">收藏</button></div><label class="sort-label"><span class="sr-only">排序方式</span><select id="sort"><option value="default">默认排序</option><option value="name">按名称</option><option value="newest">最新导入</option></select></label></div><div class="density-controls" role="group" aria-label="卡片网格密度"><button id="density-regular" aria-label="标准网格" aria-pressed="true" title="标准网格"><span data-icon="grid" aria-hidden="true"></span></button><button id="density-compact" aria-label="紧凑网格" aria-pressed="false" title="紧凑网格"><span data-icon="dense" aria-hidden="true"></span></button></div></div>
+      <div id="card-list" class="card-list" aria-label="卡片列表" aria-busy="true"><p class="list-placeholder">正在打开卡匣…</p></div>
+      <footer class="album-footer"><span id="shown-count">0 张卡片</span><span><span data-icon="check" aria-hidden="true"></span>卡片保存在本机</span></footer>
+    </section>
+    <section class="gallery" aria-labelledby="active-title">
+      <div class="gallery-topline"><div class="gallery-location"><button id="back-library" class="back-library"><span data-icon="left" aria-hidden="true"></span>返回卡库</button><span id="active-edition">PERSONAL COLLECTION</span></div><div class="gallery-mode"><span id="render-status" class="render-status" role="status">准备展台</span><button id="layers-toggle" class="layer-toggle" aria-pressed="false" disabled><span data-icon="layers" aria-hidden="true"></span><span id="layers-label">分层展示</span></button></div><button id="exit-fullscreen" class="icon-button exit-fullscreen" aria-label="退出全屏" title="退出全屏"><span data-icon="minimize" aria-hidden="true"></span></button></div>
+      <div id="display" class="display"><div class="stage-empty" role="status"><span class="empty-symbol" aria-hidden="true">✦</span><p>把喜欢的画面，收入卡匣。</p></div></div>
+      <div class="artwork-caption"><div class="title-row"><h2 id="active-title">映光卡匣</h2><button id="rename" class="icon-button small" aria-label="编辑卡片名称" title="编辑名称" disabled><span data-icon="edit" aria-hidden="true"></span></button><button id="favorite" class="icon-button small favorite-action" aria-label="收藏当前卡片" aria-pressed="false" title="收藏" disabled><span data-icon="heart" aria-hidden="true"></span></button></div><div class="artwork-subline"><p id="active-subtitle">为你的画面留一束光。</p><span id="card-kind" class="kind-badge">私人典藏</span></div></div>
+      <div class="gallery-toolbar"><div class="navigation"><button id="previous" class="icon-button" aria-label="上一张卡片" title="上一张"><span data-icon="left" aria-hidden="true"></span></button><span id="position" aria-live="polite">00 / 00</span><button id="next" class="icon-button" aria-label="下一张卡片" title="下一张"><span data-icon="right" aria-hidden="true"></span></button></div><div class="view-actions"><button id="auto" class="text-button" aria-pressed="false"><span data-icon="play" aria-hidden="true"></span><span id="auto-label">自动转动</span></button><button id="flip" class="text-button" aria-pressed="false"><span data-icon="flip" aria-hidden="true"></span><span id="flip-label">翻至背面</span></button><button id="fullscreen" class="icon-button" aria-label="全屏观赏" title="全屏观赏"><span data-icon="maximize" aria-hidden="true"></span></button></div></div>
+      <button id="commit-preview" class="primary-button commit-preview" hidden>收入卡库</button>
+      <p class="gesture-note">拖动观赏光影 · 滚轮缩放 · 左右方向键切卡</p>
+    </section>
+    <aside class="tuning" aria-labelledby="tuning-heading">
+      <div class="section-heading"><h2 id="tuning-heading">光影调校</h2><span id="save-status" class="saved-label" role="status">自动保存</span></div>
+      <p class="panel-intro">一点微调，让画面更合心意。</p>
+      <div id="layer-controls" class="layer-controls" hidden><label class="range-row" for="layer-gap"><span>层间距</span><output id="layer-gap-value" for="layer-gap">1.00</output><input id="layer-gap" type="range" min="0.25" max="2" step="0.05" value="1"></label><p>背景、人物、线稿与文字，逐层看清。拖动可旋转查看，轻点「合回卡片」恢复。</p></div>
+      <fieldset id="parameters" class="parameter-fields" disabled>
+        <legend class="sr-only">当前卡片参数</legend>
+        <label class="range-row" for="foil"><span>光泽强度</span><output id="foil-value" for="foil">52%</output><input id="foil" data-parameter="foil" type="range" min="0" max="1" step="0.01" value="0.52"></label>
+        <div class="parameter-divider"></div>
+        <label class="range-row" for="subjectScale"><span>主体比例</span><output id="subjectScale-value" for="subjectScale">1.00</output><input id="subjectScale" data-parameter="subjectScale" type="range" min="0.92" max="1.35" step="0.01" value="1"></label>
+        <label class="range-row" for="subjectDepth"><span>主体景深</span><output id="subjectDepth-value" for="subjectDepth">0.32</output><input id="subjectDepth" data-parameter="subjectDepth" type="range" min="-0.45" max="0.9" step="0.01" value="0.32"></label>
+        <label class="range-row" for="backgroundDepth"><span>底纹景深</span><output id="backgroundDepth-value" for="backgroundDepth">−0.18</output><input id="backgroundDepth" data-parameter="backgroundDepth" type="range" min="-0.4" max="0.4" step="0.01" value="-0.18"></label>
+        <label class="range-row" for="effectsDepth"><span>特效景深</span><output id="effectsDepth-value" for="effectsDepth">0.14</output><input id="effectsDepth" data-parameter="effectsDepth" type="range" min="-0.3" max="0.9" step="0.01" value="0.14"></label>
+        <div class="parameter-divider"></div>
+        <div class="finish-heading">卡面材质</div><div class="finish-options" role="group" aria-label="选择卡面材质"><button data-finish="pearl" aria-pressed="true"><i class="finish-sample pearl" aria-hidden="true"></i>珠光</button><button data-finish="silver" aria-pressed="false"><i class="finish-sample silver" aria-hidden="true"></i>银箔</button><button data-finish="gold" aria-pressed="false"><i class="finish-sample gold" aria-hidden="true"></i>烫金</button><button data-finish="original" aria-pressed="false"><i class="finish-sample original" aria-hidden="true"></i>原画</button></div>
+      </fieldset>
+      <button id="reset" class="reset-button" disabled><span data-icon="reset" aria-hidden="true"></span>恢复这张卡的默认参数</button>
+      <div class="card-details"><span class="eyebrow">关于这张卡</span><p id="active-description">收藏、观赏与微调，都留在你的设备里。</p><p id="layer-note" class="layer-note">选择卡片后，拖动查看光影与层次。</p><button id="delete" class="delete-button" hidden><span data-icon="trash" aria-hidden="true"></span>删除导入的卡片</button></div>
+      <div class="panel-footer"><span class="footer-mark">映光</span><span>YOUR OWN LITTLE GALLERY</span></div>
+    </aside>
+  </main>
+  <dialog id="settings-dialog" class="settings-dialog" aria-labelledby="settings-heading" aria-describedby="settings-description">
+    <div class="settings-topline"><span class="eyebrow">设置</span><button id="settings-close" class="icon-button" aria-label="关闭观赏设置" title="关闭"><span data-icon="close" aria-hidden="true"></span></button></div>
+    <h2 id="settings-heading">观赏设置</h2><p id="settings-description">调整拖动旋转的速度，让每张卡片都转得顺手。</p>
+    <p id="settings-save-error" class="settings-save-error" role="alert" hidden>本机存储失败，刚才的设置尚未保存。请先备份卡匣，再清理设备存储。</p>
+    <label class="range-row settings-range" for="rotation-sensitivity"><span>拖动旋转灵敏度</span><output id="rotation-sensitivity-value" for="rotation-sensitivity">1.00×</output><input id="rotation-sensitivity" type="range" min="0.25" max="2" step="0.05" value="1" aria-describedby="rotation-sensitivity-note"></label>
+    <div class="settings-range-ends" aria-hidden="true"><span>慢 · 0.25×</span><span>快 · 2.00×</span></div><p id="rotation-sensitivity-note" class="settings-note">适用于所有卡片，自动保存，并随卡匣备份保留。</p>
+    <div class="settings-footer"><button id="settings-reset" class="subtle-button"><span data-icon="reset" aria-hidden="true"></span>恢复默认灵敏度</button><span>默认 1.00×</span></div>
+    <div class="settings-backup"><button id="backup" class="subtle-button"><span data-icon="download" aria-hidden="true"></span>备份卡匣与参数</button><p>保存收藏、导入卡片和微调参数，方便迁移到其他设备。</p></div>
+  </dialog>
+  <dialog id="rename-dialog" aria-labelledby="rename-heading"><form id="rename-form"><span class="eyebrow">PERSONAL COLLECTION</span><h2 id="rename-heading">为这张卡命名</h2><label for="name-input">卡片名称</label><input id="name-input" type="text" maxlength="60" required autocomplete="off"><div class="dialog-actions"><button type="button" data-close="rename-dialog" class="subtle-button">取消</button><button type="submit" class="primary-button">保存名称</button></div></form></dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-heading"><span class="eyebrow">管理卡匣</span><h2 id="delete-heading">删除这张卡片？</h2><p id="delete-message">此卡片与它的调校参数会从卡匣移除。原始导入文件不受影响。</p><div class="dialog-actions"><button data-close="delete-dialog" class="subtle-button">保留</button><button id="confirm-delete" class="danger-button">删除卡片</button></div></dialog>
+  <dialog id="downloads-dialog" class="downloads-dialog" aria-labelledby="downloads-heading" aria-describedby="downloads-description">
+    <div class="downloads-header"><div><span class="eyebrow">收入本机卡匣</span><h2 id="downloads-heading">下载的卡片</h2></div><button id="downloads-close" class="icon-button" aria-label="关闭下载卡片窗口" title="关闭"><span data-icon="close" aria-hidden="true"></span></button></div>
+    <p id="downloads-description" class="downloads-description">合集 ZIP 可直接导入，无需解压。</p>
+    <div class="downloads-content">
+    <div id="downloads-status" class="downloads-status" role="status" aria-live="polite"><strong id="downloads-status-title">正在扫描下载目录…</strong><p id="downloads-message"></p></div>
+    <div id="downloads-permission-note" class="downloads-permission" hidden><p>一次授权，之后直接扫描。</p><p>Android 11 及以上需开启“所有文件访问权限”，应用仅扫描下载目录，不上传文件。</p></div>
+    <button id="downloads-access" class="primary-button downloads-access" hidden>允许扫描下载目录</button>
+    <p id="downloads-result" class="downloads-result" role="status" hidden></p>
+    <p id="downloads-limit" class="downloads-limit" role="status" hidden>每次最多导入50个文件，可分批导入</p>
+    <div id="downloads-results" class="downloads-results" hidden><div class="downloads-list-toolbar"><label class="downloads-select-all"><input id="downloads-all" type="checkbox">全选未导入</label><span id="downloads-selection">已选 0 / 0 个文件</span></div><div id="downloads-list" class="downloads-list" role="group" aria-label="下载目录中的卡片文件"></div></div>
+    <p id="downloads-truncated" class="downloads-truncated" hidden>文件较多，本次仅显示部分结果。导入后可刷新继续，或手动选择文件。</p>
+    </div>
+    <div class="downloads-footer"><div class="downloads-secondary"><button id="downloads-manual" class="subtle-button">手动选择文件</button><button id="downloads-refresh" class="subtle-button"><span data-icon="reset" aria-hidden="true"></span>刷新</button></div><button id="downloads-import" class="primary-button" disabled>导入所选</button></div>
+  </dialog>
+  <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

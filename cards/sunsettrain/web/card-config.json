@@ -1,0 +1,32 @@
+{
+  "title": "落日列车",
+  "subtitle": "晚霞与旅途",
+  "technique": "落日列车",
+  "tagline": "让晚霞陪你，慢慢驶向远方。",
+  "description": "让晚霞陪你，慢慢驶向远方。",
+  "edition": "004 / 008",
+  "collection": "光影拾藏",
+  "assets": {
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "model": "./assets/card.glb"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.28,
+    "backgroundDepth": -0.18,
+    "effectsScale": 1,
+    "effectsDepth": 0.45,
+    "foil": 0.35
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "font": "C:\\Windows\\Fonts\\simkai.ttf"
+}
