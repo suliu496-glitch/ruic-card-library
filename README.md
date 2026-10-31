@@ -29,8 +29,8 @@
 
 打开 [Releases](https://github.com/suliu496-glitch/ruic-card-library/releases) 获取：
 
-- Android 安装包：映光卡匣-1.0.4.apk
-- 完整闪卡合集：映光卡匣-全套闪卡001-039-20261031.zip
+- Android 安装包：RuiC-Card-Library-1.0.4.apk
+- 完整闪卡合集：RuiC-Cards-001-039-20261031.zip
 
 合集包含 39 个 .ruic 单卡文件及目录和校验清单。Android 应用内置 001–008；导入合集时若已有同卡，应用会把它作为新导入卡保存。
 
@@ -69,4 +69,5 @@
 ## 许可
 
 应用源代码采用 [MIT License](LICENSE)。图片、卡片图稿、角色及其素材不由代码许可证授权；适用说明见 [ARTWORK-NOTICE.md](ARTWORK-NOTICE.md)。开源代码不代表对第三方素材或角色的官方授权、认可或关联声明。
+
 
