@@ -21,8 +21,8 @@ android {
         applicationId = "cn.liuyingbin.ruiccards"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.0.4"
+        versionCode = 6
+        versionName = "1.0.5"
         testInstrumentationRunner = "cn.liuyingbin.ruiccards.CardStoreInstrumentation"
     }
     if (releaseSigningFile.exists()) {
@@ -47,10 +47,18 @@ android {
 }
 
 val syncLibraryAssets by tasks.registering(Sync::class) {
+    doFirst {
+        val cards = file("../../cards").listFiles()?.filter { it.isDirectory && it.resolve("web/card-config.json").isFile }.orEmpty()
+        val required = listOf("background.png", "subject.png", "lineart.png", "text.png", "card.glb")
+        check(cards.isNotEmpty() && cards.all { card -> required.all { card.resolve("web/assets/$it").isFile } }) {
+            "内置卡资源缺失：请先补齐 cards/<卡片ID>/web/assets 下的图片和模型，再构建 APK。"
+        }
+    }
     from("../../web") {
         into("library")
         exclude("**/node_modules/**", "**/.git/**", "**/package-lock.json", "**/bun.lock*", "**/package.json")
         exclude("cards/**")
+        exclude("demo-card-038/**")
     }
     from("../../cards") {
         into("library/cards")

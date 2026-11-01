@@ -175,10 +175,15 @@ void main() {
 const subjectFragment = common + `
 uniform sampler2D tSubject;
 void main() {
-  vec4 art=texture2D(tSubject,vUv);
+  // Relief cards use a separate subject mesh. Apply the same view-driven
+  // depth offset as composited cards; mesh spacing alone is nearly invisible
+  // on a phone. Sampling outside the source canvas stays transparent.
+  vec2 su=parallax(vUv,uDepth);
+  vec4 art=texture2D(tSubject,clamp(su,0.,1.));
+  art.a*=inside(su);
   if(art.a<.06)discard;
   vec2 px=1./vec2(1024.,1630.);
-  float inner=min(min(texture2D(tSubject,vUv+vec2(px.x*2.,0.)).a,texture2D(tSubject,vUv-vec2(px.x*2.,0.)).a),min(texture2D(tSubject,vUv+vec2(0.,px.y*2.)).a,texture2D(tSubject,vUv-vec2(0.,px.y*2.)).a));
+  float inner=min(min(texture2D(tSubject,su+vec2(px.x*2.,0.)).a,texture2D(tSubject,su-vec2(px.x*2.,0.)).a),min(texture2D(tSubject,su+vec2(0.,px.y*2.)).a,texture2D(tSubject,su-vec2(0.,px.y*2.)).a));
   vec3 col=art.rgb;
   col=laminate(col,vUv);
   col=mix(col,vec3(.86,.72,.40),(1.-inner)*.22);
@@ -189,10 +194,11 @@ void main() {
 const effectsFragment = common + `
 uniform sampler2D tEffects;
 void main() {
-  vec4 art=texture2D(tEffects,vUv);
+  vec2 eu=parallax(vUv,uFxDepth);
+  vec4 art=texture2D(tEffects,clamp(eu,0.,1.));
   // The relief effects layer is a pre-cut RGBA asset: use its real alpha so
   // thorn/spark deco keeps its silhouette instead of a color-channel matte.
-  float alpha=art.a;
+  float alpha=art.a*inside(eu);
   if(alpha<.015)discard;
   vec3 col=art.rgb;
   col=laminate(col,vUv);

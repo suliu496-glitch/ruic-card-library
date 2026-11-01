@@ -45,7 +45,7 @@
 
 ## 构建 Android 应用
 
-需要 JDK 17、Android SDK 35。项目使用 Gradle 9.1.0 和 Android Gradle Plugin 8.11.1。进入 android/ 后：
+需要 JDK 17、Android SDK 35。项目使用 Gradle 9.1.0 和 Android Gradle Plugin 8.11.1。内置卡图稿和模型不在源码仓库中；重建前须取得有权使用的完整内置卡资源，将每张卡的背景、主体、线稿、文字图片和 card.glb 放入对应的 `cards/<卡片ID>/web/assets/`。构建会检查资源是否齐全。进入 android/ 后：
 
 ~~~powershell
 .\gradlew.bat :app:assembleDebug :app:lintDebug

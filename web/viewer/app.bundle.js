@@ -1,4 +1,4 @@
-// node_modules/three/build/three.core.js
+// ../../cctool/ruic-card-library/web/viewer/node_modules/three/build/three.core.js
 var REVISION = "180";
 var CullFaceNone = 0;
 var CullFaceBack = 1;
@@ -11835,7 +11835,7 @@ if (typeof window !== "undefined") {
   }
 }
 
-// node_modules/three/build/three.module.js
+// ../../cctool/ruic-card-library/web/viewer/node_modules/three/build/three.module.js
 function WebGLAnimation() {
   let context = null;
   let isAnimating = false;
@@ -25520,7 +25520,7 @@ class WebGLRenderer {
   }
 }
 
-// node_modules/three/examples/jsm/utils/BufferGeometryUtils.js
+// ../../cctool/ruic-card-library/web/viewer/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js
 function toTrianglesDrawMode(geometry, drawMode) {
   if (drawMode === TrianglesDrawMode) {
     console.warn("THREE.BufferGeometryUtils.toTrianglesDrawMode(): Geometry already defined as triangles.");
@@ -25576,7 +25576,7 @@ function toTrianglesDrawMode(geometry, drawMode) {
   }
 }
 
-// node_modules/three/examples/jsm/loaders/GLTFLoader.js
+// ../../cctool/ruic-card-library/web/viewer/node_modules/three/examples/jsm/loaders/GLTFLoader.js
 class GLTFLoader extends Loader {
   constructor(manager) {
     super(manager);
@@ -27999,7 +27999,7 @@ function addPrimitiveAttributes(geometry, primitiveDef, parser) {
   });
 }
 
-// icons.data.js
+// web/viewer/icons.data.js
 var ICON_TREES = {
   Info: [
     "svg",
@@ -28321,7 +28321,7 @@ var ICON_TREES = {
   ]
 };
 
-// app.js
+// web/viewer/app.js
 var icons = ICON_TREES;
 var $ = (id) => document.getElementById(id);
 var stage = $("stage");
@@ -28491,10 +28491,15 @@ void main() {
 var subjectFragment = common2 + `
 uniform sampler2D tSubject;
 void main() {
-  vec4 art=texture2D(tSubject,vUv);
+  // Relief cards use a separate subject mesh. Apply the same view-driven
+  // depth offset as composited cards; mesh spacing alone is nearly invisible
+  // on a phone. Sampling outside the source canvas stays transparent.
+  vec2 su=parallax(vUv,uDepth);
+  vec4 art=texture2D(tSubject,clamp(su,0.,1.));
+  art.a*=inside(su);
   if(art.a<.06)discard;
   vec2 px=1./vec2(1024.,1630.);
-  float inner=min(min(texture2D(tSubject,vUv+vec2(px.x*2.,0.)).a,texture2D(tSubject,vUv-vec2(px.x*2.,0.)).a),min(texture2D(tSubject,vUv+vec2(0.,px.y*2.)).a,texture2D(tSubject,vUv-vec2(0.,px.y*2.)).a));
+  float inner=min(min(texture2D(tSubject,su+vec2(px.x*2.,0.)).a,texture2D(tSubject,su-vec2(px.x*2.,0.)).a),min(texture2D(tSubject,su+vec2(0.,px.y*2.)).a,texture2D(tSubject,su-vec2(0.,px.y*2.)).a));
   vec3 col=art.rgb;
   col=laminate(col,vUv);
   col=mix(col,vec3(.86,.72,.40),(1.-inner)*.22);
@@ -28505,10 +28510,11 @@ void main() {
 var effectsFragment = common2 + `
 uniform sampler2D tEffects;
 void main() {
-  vec4 art=texture2D(tEffects,vUv);
+  vec2 eu=parallax(vUv,uFxDepth);
+  vec4 art=texture2D(tEffects,clamp(eu,0.,1.));
   // The relief effects layer is a pre-cut RGBA asset: use its real alpha so
   // thorn/spark deco keeps its silhouette instead of a color-channel matte.
-  float alpha=art.a;
+  float alpha=art.a*inside(eu);
   if(alpha<.015)discard;
   vec3 col=art.rgb;
   col=laminate(col,vUv);
