@@ -23,10 +23,7 @@
 
 ## 下载
 
-打开 [Releases](https://github.com/suliu496-glitch/ruic-card-library/releases) 获取：
-
-- Android 安装包：RuiC-Card-Library-1.0.4.apk
-- 完整闪卡合集：RuiC-Cards-001-039-20261031.zip
+从 [1.0.5 Release](https://github.com/suliu496-glitch/ruic-card-library/releases/tag/v1.0.5) 下载 Android 安装包 `RuiC-Card-Library-1.0.5.apk`。完整闪卡合集 `RuiC-Cards-001-039-20261031.zip` 可在 [1.0.4 Release](https://github.com/suliu496-glitch/ruic-card-library/releases/tag/v1.0.4) 下载。
 
 合集包含 39 个 .ruic 单卡文件及目录和校验清单。Android 应用内置 001–008；导入合集时若已有同卡，应用会把它作为新导入卡保存。
 
