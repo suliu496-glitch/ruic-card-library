@@ -6,9 +6,9 @@
 
 ## 卡片效果演示
 
-选用 038「夜场回眸」展示应用内实际 WebGL 渲染：角度变化带来柔和珠光，随后展开并收拢真实图层。
+单张 038「夜场回眸」的实际 WebGL 卡面：斜视角下可见柔和彩虹镭射与错位的背景、主体层。
 
-![038 夜场回眸的分层与视角珠光效果](previews/night-stadium-foil-layers.gif)
+![038 夜场回眸的分层与视角珠光效果](previews/night-stadium-foil-layers.jpg)
 
 ## 闪卡目录
 
@@ -65,5 +65,6 @@
 ## 许可
 
 应用源代码采用 [MIT License](LICENSE)。图片、卡片图稿、角色及其素材不由代码许可证授权；适用说明见 [ARTWORK-NOTICE.md](ARTWORK-NOTICE.md)。开源代码不代表对第三方素材或角色的官方授权、认可或关联声明。
+
 
 
