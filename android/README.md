@@ -1,6 +1,10 @@
 # 映光卡匣 Android
 
-原生 Java Activity + 离线 WebView，Android8.0（API26）及以上，target API35。当前1.0.4（versionCode5），内置8张RuiC层卡。横竖屏和分屏自适应，Three.js与资源打包于APK，不申请网络权限；下载扫描首次请求相应文件读取权限。APK无按CPU架构区分的原生库，可用于ARM64平板。
+原生 Java Activity + 离线 WebView，Android8.0（API26）及以上，target API35。当前1.0.6（versionCode7），内置8张RuiC层卡。横竖屏和分屏自适应，Three.js与资源打包于APK，不申请网络权限；下载扫描首次请求相应文件读取权限。APK无按CPU架构区分的原生库，可用于ARM64平板。
+
+## 闪卡管理
+
+卡库中长按卡片或点击“管理卡片”进入选择模式，可多选、全选当前列表并确认删除。导入卡删除应用内副本及其参数；原始导入文件保留。内置卡通过持久状态隐藏，备份会保存隐藏状态；若需要重新添加，可导入原始 .ruic。删除失败的项目会保留并提示重试。
 
 ## 下载扫描与免导入预览
 

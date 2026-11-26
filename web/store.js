@@ -19,9 +19,10 @@ export function cleanParameters(input = {}, base = defaults) {
   return clean;
 }
 export function cleanState(input) {
-  const state = { schema: 1, activeId: '', filter: 'all', sort: 'default', auto: false, fullscreen: false, settings: cleanSettings(), cards: {} };
+  const state = { schema: 1, activeId: '', filter: 'all', sort: 'default', auto: false, fullscreen: false, settings: cleanSettings(), hiddenBuiltins: [], cards: {} };
   if (!input || typeof input !== 'object' || Array.isArray(input)) return state;
   state.settings = cleanSettings(input.settings);
+  if (Array.isArray(input.hiddenBuiltins)) state.hiddenBuiltins = [...new Set(input.hiddenBuiltins.filter(safeId))].slice(0, 5000);
   if (safeId(input.activeId)) state.activeId = input.activeId;
   if (['all', 'favorites'].includes(input.filter)) state.filter = input.filter;
   if (['default', 'name', 'newest'].includes(input.sort)) state.sort = input.sort;

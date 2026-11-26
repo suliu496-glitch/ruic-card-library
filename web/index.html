@@ -22,6 +22,7 @@
     <section class="library" aria-labelledby="library-heading">
       <h1 id="library-heading" class="sr-only">我的卡片</h1>
       <div class="album-toolbar"><div class="library-filters"><div class="segmented" role="group" aria-label="卡片筛选"><button id="filter-all" aria-pressed="true">全部卡片 <span id="total-count" class="count-pill">0</span></button><button id="filter-favorites" aria-pressed="false">收藏</button></div><label class="sort-label"><span class="sr-only">排序方式</span><select id="sort"><option value="default">默认排序</option><option value="name">按名称</option><option value="newest">最新导入</option></select></label></div><div class="density-controls" role="group" aria-label="卡片网格密度"><button id="density-regular" aria-label="标准网格" aria-pressed="true" title="标准网格"><span data-icon="grid" aria-hidden="true"></span></button><button id="density-compact" aria-label="紧凑网格" aria-pressed="false" title="紧凑网格"><span data-icon="dense" aria-hidden="true"></span></button></div></div>
+      <div class="management-bar"><button id="manage-cards" class="subtle-button">管理卡片</button><div id="selection-actions" class="selection-actions" hidden><span id="selection-count" aria-live="polite">已选 0 张</span><button id="select-all-cards" class="subtle-button">全选当前列表</button><button id="delete-selected" class="danger-button" disabled>删除</button><button id="cancel-selection" class="subtle-button">取消</button></div></div>
       <div id="card-list" class="card-list" aria-label="卡片列表" aria-busy="true"><p class="list-placeholder">正在打开卡匣…</p></div>
       <footer class="album-footer"><span id="shown-count">0 张卡片</span><span><span data-icon="check" aria-hidden="true"></span>卡片保存在本机</span></footer>
     </section>
@@ -49,7 +50,7 @@
         <div class="finish-heading">卡面材质</div><div class="finish-options" role="group" aria-label="选择卡面材质"><button data-finish="pearl" aria-pressed="true"><i class="finish-sample pearl" aria-hidden="true"></i>珠光</button><button data-finish="silver" aria-pressed="false"><i class="finish-sample silver" aria-hidden="true"></i>银箔</button><button data-finish="gold" aria-pressed="false"><i class="finish-sample gold" aria-hidden="true"></i>烫金</button><button data-finish="original" aria-pressed="false"><i class="finish-sample original" aria-hidden="true"></i>原画</button></div>
       </fieldset>
       <button id="reset" class="reset-button" disabled><span data-icon="reset" aria-hidden="true"></span>恢复这张卡的默认参数</button>
-      <div class="card-details"><span class="eyebrow">关于这张卡</span><p id="active-description">收藏、观赏与微调，都留在你的设备里。</p><p id="layer-note" class="layer-note">选择卡片后，拖动查看光影与层次。</p><button id="delete" class="delete-button" hidden><span data-icon="trash" aria-hidden="true"></span>删除导入的卡片</button></div>
+      <div class="card-details"><span class="eyebrow">关于这张卡</span><p id="active-description">收藏、观赏与微调，都留在你的设备里。</p><p id="layer-note" class="layer-note">选择卡片后，拖动查看光影与层次。</p><button id="delete" class="delete-button" hidden><span data-icon="trash" aria-hidden="true"></span>删除卡片</button></div>
       <div class="panel-footer"><span class="footer-mark">映光</span><span>YOUR OWN LITTLE GALLERY</span></div>
     </aside>
   </main>
@@ -63,7 +64,7 @@
     <div class="settings-backup"><button id="backup" class="subtle-button"><span data-icon="download" aria-hidden="true"></span>备份卡匣与参数</button><p>保存收藏、导入卡片和微调参数，方便迁移到其他设备。</p></div>
   </dialog>
   <dialog id="rename-dialog" aria-labelledby="rename-heading"><form id="rename-form"><span class="eyebrow">PERSONAL COLLECTION</span><h2 id="rename-heading">为这张卡命名</h2><label for="name-input">卡片名称</label><input id="name-input" type="text" maxlength="60" required autocomplete="off"><div class="dialog-actions"><button type="button" data-close="rename-dialog" class="subtle-button">取消</button><button type="submit" class="primary-button">保存名称</button></div></form></dialog>
-  <dialog id="delete-dialog" aria-labelledby="delete-heading"><span class="eyebrow">管理卡匣</span><h2 id="delete-heading">删除这张卡片？</h2><p id="delete-message">此卡片与它的调校参数会从卡匣移除。原始导入文件不受影响。</p><div class="dialog-actions"><button data-close="delete-dialog" class="subtle-button">保留</button><button id="confirm-delete" class="danger-button">删除卡片</button></div></dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-heading"><span class="eyebrow">管理卡匣</span><h2 id="delete-heading">删除选中的卡片？</h2><p id="delete-message">此卡片与它的调校参数会从卡匣移除。原始导入文件不受影响。</p><div class="dialog-actions"><button data-close="delete-dialog" class="subtle-button">保留</button><button id="confirm-delete" class="danger-button">删除卡片</button></div></dialog>
   <dialog id="downloads-dialog" class="downloads-dialog" aria-labelledby="downloads-heading" aria-describedby="downloads-description">
     <div class="downloads-header"><div><span class="eyebrow">收入本机卡匣</span><h2 id="downloads-heading">下载的卡片</h2></div><button id="downloads-close" class="icon-button" aria-label="关闭下载卡片窗口" title="关闭"><span data-icon="close" aria-hidden="true"></span></button></div>
     <p id="downloads-description" class="downloads-description">合集 ZIP 可直接导入，无需解压。</p>

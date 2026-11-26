@@ -23,16 +23,17 @@
 
 ## 下载
 
-从 [1.0.5 Release](https://github.com/suliu496-glitch/ruic-card-library/releases/tag/v1.0.5) 下载 Android 安装包 `RuiC-Card-Library-1.0.5.apk`。完整闪卡合集 `RuiC-Cards-001-039-20261031.zip` 可在 [1.0.4 Release](https://github.com/suliu496-glitch/ruic-card-library/releases/tag/v1.0.4) 下载。
+从 [1.0.6 Release](https://github.com/suliu496-glitch/ruic-card-library/releases/tag/v1.0.6) 下载 Android 安装包 `RuiC-Card-Library-1.0.6.apk`。完整闪卡合集 `RuiC-Cards-001-039-20261031.zip` 可在 [1.0.4 Release](https://github.com/suliu496-glitch/ruic-card-library/releases/tag/v1.0.4) 下载。
 
 合集包含 39 个 .ruic 单卡文件及目录和校验清单。Android 应用内置 001–008；导入合集时若已有同卡，应用会把它作为新导入卡保存。
 
 ## 功能
 
 - 本机离线保存卡片、收藏、排序和个人调校参数
-- 相册式卡库网格，点选后全屏预览
+- 相册式卡库网格，点选后全屏预览；长按或点击“管理卡片”可多选并删除
 - 展开真实的背景、主体、线稿和文字层，拖动查看视差
 - 珠光、银箔和烫金材质；光泽随观察角度变化
+- 内置卡删除后隐藏在卡库中；通过原始闪卡文件可再次导入
 - 在设置中调整拖动旋转灵敏度；在预览中调整层间距、景深和光泽
 - 快速扫描 Android 下载目录；支持 .ruic、单卡 ZIP 和闪卡合集 ZIP
 - 导入前临时预览；支持从系统文件管理器打开闪卡文件

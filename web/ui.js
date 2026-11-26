@@ -8,7 +8,7 @@ export function toast(message) {
   toastTimer = setTimeout(() => { $('toast').hidden = true; }, 4000);
 }
 export function setRenderStatus(message) { $('render-status').textContent = message; }
-export function renderCards(cards, allCount, activeId, state, onSelect, onFavorite) {
+export function renderCards(cards, allCount, activeId, state, onSelect, onFavorite, management = {}) {
   const list = $('card-list');
   const position = { top: list.scrollTop, left: list.scrollLeft };
   const focusedRow = document.activeElement?.closest('.card-item');
@@ -31,13 +31,25 @@ export function renderCards(cards, allCount, activeId, state, onSelect, onFavori
       summary.append(number, document.createElement('strong'), document.createElement('small'));
       button.append(img, summary);
       const favorite = document.createElement('button'); favorite.className = 'card-star'; favorite.append(icon('heart'));
-      row.append(button, favorite);
+      const badge = document.createElement('span'); badge.className = 'selection-badge'; badge.setAttribute('aria-hidden', 'true'); badge.textContent = '✓';
+      row.append(button, favorite, badge);
     }
-    row.className = `card-item${card.id === activeId ? ' active' : ''}`;
+    row.className = `card-item${card.id === activeId ? ' active' : ''}${management.enabled ? ' selecting' : ''}${management.selected?.has(card.id) ? ' selected' : ''}`;
     const button = row.querySelector('.card-select');
-    button.setAttribute('aria-label', `打开${card.title}`);
+    button.setAttribute('aria-label', management.enabled ? `${management.selected?.has(card.id) ? '取消选择' : '选择'}${card.title}` : `打开${card.title}，长按管理`);
+    if (management.enabled) button.setAttribute('aria-pressed', String(management.selected?.has(card.id))); else button.removeAttribute('aria-pressed');
     button.setAttribute('aria-current', card.id === activeId ? 'true' : 'false');
-    button.onclick = () => onSelect(card.id);
+    button.onclick = () => { if (row.suppressClick) { row.suppressClick = false; return; } management.enabled ? management.toggle(card.id) : onSelect(card.id); };
+    button.onpointerdown = event => {
+      if (management.enabled || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      const x = event.clientX, y = event.clientY;
+      clearTimeout(row.pressTimer); row.suppressClick = false;
+      row.pressTimer = setTimeout(() => { row.pressTimer = null; row.suppressClick = true; management.start(card.id); }, 550);
+      row.pressStart = { x, y };
+    };
+    button.onpointermove = event => { if (row.pressStart && Math.hypot(event.clientX - row.pressStart.x, event.clientY - row.pressStart.y) > 10) { clearTimeout(row.pressTimer); row.pressTimer = null; } };
+    button.onpointerup = button.onpointercancel = () => { clearTimeout(row.pressTimer); row.pressTimer = null; row.pressStart = null; };
+    button.oncontextmenu = event => event.preventDefault();
     const img = row.querySelector('img');
     if (img.getAttribute('src') !== card.cover) img.src = card.cover;
     row.querySelector('.card-number').textContent = String(index + 1).padStart(2, '0');
@@ -47,6 +59,7 @@ export function renderCards(cards, allCount, activeId, state, onSelect, onFavori
     const isFavorite = !!state.cards[card.id]?.favorite;
     favorite.setAttribute('aria-label', `${isFavorite ? '取消收藏' : '收藏'}${card.title}`);
     favorite.setAttribute('aria-pressed', String(isFavorite));
+    favorite.hidden = !!management.enabled;
     favorite.onclick = () => onFavorite(card.id);
     desired.push(row);
   });
@@ -97,7 +110,7 @@ export function renderActive(card, state, index, count) {
   $('layer-note').textContent = card.kind === 'layered' ? '人物、背景与特效分别成层。拖动卡片，让光泽与景深随视角变化。' : '这是一张单图收藏，支持光泽、比例与材质微调。景深调节仅适用于分层闪卡。';
   $('favorite').setAttribute('aria-pressed', String(!!state.cards[card.id]?.favorite));
   $('favorite').setAttribute('aria-label', state.cards[card.id]?.favorite ? '取消收藏当前卡片' : '收藏当前卡片');
-  $('delete').hidden = card.source === 'builtin';
+  $('delete').hidden = false;
 }
 export function renderParameters(parameters, card, hasEffects = true, ranges) {
   document.querySelectorAll('[data-parameter]').forEach(input => {

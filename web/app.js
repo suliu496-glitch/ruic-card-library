@@ -16,6 +16,16 @@ let saveFailed = false;
 let fullscreenRevision = 0;
 let cancelLibraryRestore;
 let previewSession = null, committingPreview = null;
+let managing = false, selection = new Set(), pendingDeletion = [];
+function startManagement(id) { managing = true; if (id) selection.add(id); renderLibrary(); }
+function toggleSelection(id) { selection.has(id) ? selection.delete(id) : selection.add(id); renderLibrary(); }
+function stopManagement() { managing = false; selection.clear(); renderLibrary(); }
+function renderManagement() {
+  $('manage-cards').hidden = managing; $('selection-actions').hidden = !managing;
+  $('selection-count').textContent = `已选 ${selection.size} 张`;
+  $('delete-selected').disabled = !selection.size;
+  $('select-all-cards').disabled = !filtered.length;
+}
 const previewUI = createPreviewUI(positionLayerControls);
 const downloadsImport = createDownloadsImport({ manualImport: importFilesManually, previewFile: nativePreviewDownload, toast });
 const viewer = new ViewerController($('display'), {
@@ -70,7 +80,8 @@ function visibleCards() {
 function renderLibrary() {
   const current = currentState();
   filtered = previewSession ? previewSession.cards : visibleCards();
-  if (!previewSession) renderCards(filtered, cards.length, state.activeId, state, selectCard, toggleFavorite);
+  if (!previewSession) renderCards(filtered, cards.length, state.activeId, state, selectCard, toggleFavorite, { enabled: managing, selected: selection, toggle: toggleSelection, start: startManagement });
+  renderManagement();
   const index = filtered.findIndex(card => card.id === current.activeId);
   renderActive(active, current, index, filtered.length);
   $('commit-preview').hidden = !previewSession;
@@ -177,7 +188,7 @@ async function loadCards() {
       catch (error) { console.warn('Image storage unavailable:', error); }
     }
     const unique = new Map();
-    [...builtin, ...imported].forEach(card => unique.set(card.id, card));
+    [...builtin.filter(card => !state.hiddenBuiltins.includes(card.id)), ...imported].forEach(card => unique.set(card.id, card));
     cards = [...unique.values()];
     // Native imports may finish while a temporary collection is still being viewed.
     if (previewSession) return;
@@ -256,7 +267,7 @@ function positionLayerControls() {
 function handleBack() {
   const dialog = document.querySelector('dialog[open]');
   if (dialog) { dialog.close(); return true; }
-  if (screen !== 'preview') return false;
+  if (screen !== 'preview') { if (managing) { stopManagement(); return true; } return false; }
   if (previewUI.isOpen()) { previewUI.setOpen(false); return true; }
   showLibrary();
   return true;
@@ -326,16 +337,45 @@ $('layer-gap').oninput = event => { layerGap = Number(event.target.value); viewe
 $('rename').onclick = () => { if (!active) return; $('name-input').value = active.title; $('rename-dialog').showModal(); $('name-input').focus(); $('name-input').select(); };
 $('rename-form').onsubmit = event => { event.preventDefault(); const title = $('name-input').value.trim(); if (!title || !active) return; entry(active.id).title = title.slice(0, 60); active.title = entry(active.id).title; renderLibrary(); persist(); $('rename-dialog').close(); toast('名称已保存。'); };
 document.querySelectorAll('[data-close]').forEach(button => { button.onclick = () => $(button.dataset.close).close(); });
-$('delete').onclick = () => { if (!active || active.source === 'builtin') return; $('delete-message').textContent = `「${active.title}」与它的调校参数会从卡匣移除。原始导入文件不受影响。`; $('delete-dialog').showModal(); };
+function requestDeletion(items) {
+  pendingDeletion = items;
+  if (!items.length) return;
+  const builtins = items.filter(card => card.source === 'builtin').length;
+  $('delete-heading').textContent = `删除选中的 ${items.length} 张卡片？`;
+  $('delete-message').textContent = `卡片及其收藏和调校参数将从卡匣移除，原始导入文件不受影响。${builtins ? `其中 ${builtins} 张为内置卡，可通过导入原始闪卡文件重新添加。` : ''}`;
+  $('delete-dialog').showModal();
+}
+$('manage-cards').onclick = () => startManagement();
+$('cancel-selection').onclick = stopManagement;
+$('select-all-cards').onclick = () => { const all = filtered.every(card => selection.has(card.id)); filtered.forEach(card => all ? selection.delete(card.id) : selection.add(card.id)); renderLibrary(); };
+$('delete-selected').onclick = () => requestDeletion(cards.filter(card => selection.has(card.id)));
+$('delete').onclick = () => { if (active && !previewSession) requestDeletion([active]); };
 $('confirm-delete').onclick = async () => {
-  if (!active || active.source === 'builtin') return;
-  const id = active.id;
+  const button = $('confirm-delete'); button.disabled = true;
+  let succeeded = 0, failed = 0;
+  const deletedIds = new Set();
   try {
-    const success = active.source === 'desktop' ? await deleteDesktopImage(id) : nativeDelete(id);
-    if (!success) throw new Error('卡片未能删除，请重试。');
-    delete state.cards[id]; active = null; state.activeId = ''; viewer.close(); persist();
-    $('delete-dialog').close(); await loadCards(); toast('这张卡片已移出卡匣。');
+    // Save the builtin tombstones before removing any imported files.
+    const builtins = pendingDeletion.filter(card => card.source === 'builtin');
+    if (builtins.length) {
+      const prior = state.hiddenBuiltins;
+      state.hiddenBuiltins = [...new Set([...prior, ...builtins.map(card => card.id)])];
+      if (!saveState(state)) { state.hiddenBuiltins = prior; throw new Error('保存失败，请检查设备存储后重试。'); }
+      for (const card of builtins) { delete state.cards[card.id]; selection.delete(card.id); deletedIds.add(card.id); succeeded++; }
+    }
+    for (const card of pendingDeletion.filter(card => card.source !== 'builtin')) {
+      try {
+        const success = card.source === 'desktop' ? await deleteDesktopImage(card.id) : nativeDelete(card.id);
+        if (!success) throw new Error('delete failed');
+        delete state.cards[card.id]; selection.delete(card.id); deletedIds.add(card.id); succeeded++;
+      } catch (error) { console.warn('Card deletion failed', error); failed++; }
+    }
+    if (deletedIds.has(active?.id)) { active = null; state.activeId = ''; viewer.close(); if (screen === 'preview') showLibrary(); }
+    persist(); $('delete-dialog').close(); pendingDeletion = [];
+    if (!failed) { managing = false; selection.clear(); }
+    await loadCards(); toast(failed ? `已删除 ${succeeded} 张，${failed} 张删除失败，请重试。` : `已删除 ${succeeded} 张卡片。`);
   } catch (error) { toast(error.message); }
+  finally { button.disabled = false; }
 };
 $('import').onclick = importFiles;
 $('commit-preview').onclick = () => {
